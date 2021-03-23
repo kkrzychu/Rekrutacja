@@ -1,0 +1,100 @@
+<div class="container">
+
+    <h1>Wypełnij wszystkie pola</h1>
+
+    <form [formGroup]="myForm">
+
+        <div class="form-group">
+            <!-- INPUT NAME -->
+            <label class="form-check-label inputLabel" for="name">Imię 
+                <span *ngIf="name?.invalid && name?.touched" style="color: red;">
+                    - Wprowadź imię
+                </span>
+            </label>
+            <input type="text" class="form-control" id="name" formControlName="name">
+
+            <!-- INPUT SURNAME -->
+            <label class="form-check-label inputLabel" for="surname">Nazwisko 
+                <span *ngIf="surname?.invalid && surname?.touched" style="color: red;">
+                    - Wprowadź nazwisko
+                </span>
+            </label>
+            <input type="text" class="form-control" id="surname" formControlName="surname">
+
+            <!-- INPUT EMAIL -->
+            <label class="form-check-label inputLabel" for="email">Email 
+                <span *ngIf="email?.invalid && email?.touched" style="color: red;">
+                    - Email jest niepoprawny
+                </span>
+            </label>
+            <input type="email" class="form-control" id="email" formControlName="email">
+
+
+            <!-- INPUT PASSWORD -->
+            <label class="form-check-label inputLabel" for="password">Hasło
+                <span *ngIf="password?.invalid && password?.touched" style="color: red;">
+                    - Minimalna długość hasła to 6 znaków
+                </span>
+            </label>
+            <input type="password" class="form-control" id="password" formControlName="password">
+
+            <!-- TEXTAREA DESCRIPTION -->
+            <label class="form-check-label inputLabel" for="desc">Opis użytkownika
+                <span *ngIf="userDescription?.invalid && userDescription?.touched" style="color: red;">
+                    - Wprowadź opis użytkownika
+                </span>
+            </label>
+            <textarea id="desc" class="form-control" formControlName="userDescription"></textarea>
+
+            <!-- SELECT COUNTRY -->
+            <label class="form-check-label inputLabel" for="country">Państwo</label>
+            <select class="form-control" formControlName="country">
+                <option *ngFor="let item of selectOptions">{{ item }}</option>
+            </select>
+
+            <!-- SEX RADIO -->
+            <label class="form-check-label inputLabel" for="sex">Płeć
+                <span *ngIf="sex?.invalid && sex?.touched" style="color: red;">
+                    - Wybierz płeć
+                </span>
+            </label>
+            <ng-container id="sex">
+                <div class="form-check ">
+                    <input class="form-check-input" value="female" name="sex" formControlName="sex" id="female"
+                        type="radio">
+                    <label class="form-check-label" for="female">Kobieta</label>
+                </div>
+                <div class="form-check ">
+                    <input class="form-check-input" value="male" name="sex" formControlName="sex" id="male"
+                        type="radio">
+                    <label class="form-check-label" for="male">Mężczyzna</label>
+                </div>
+            </ng-container>
+
+            <!-- CONTRACT CHECKBOX  -->
+            <label class="form-check-label inputLabel" for="contract">Warunki
+                <span *ngIf="check?.invalid && check?.touched" style="color: red;">
+                    - Zaznacz warunki
+                </span>
+            </label>
+            <ng-container id="contract" formGroupName="check">
+                <div class="form-check ">
+                    <input class="form-check-input" type="checkbox" id="proc" value="false" formControlName="procData">
+                    <label class="form-check-label" for="proc">Zgoda na przetwarzanie danych</label>
+                </div>
+                <div class="form-check ">
+                    <input class="form-check-input" type="checkbox" id="accept" value="false" formControlName="Accept">
+                    <label class="form-check-label" for="accept">Akceptacja regulaminu</label>
+                </div>
+            </ng-container>
+
+        </div>
+        <!-- SEND BUTTON -->
+        <div class="form-group sendButton">
+            <button type="button" routerLink="/zalogowano" class="btn btn-success btn-lg" [disabled]="myForm.invalid"
+                (click)="showLog()">Wyślij</button>
+        </div>
+
+    </form>
+
+</div>

@@ -1,0 +1,25 @@
+body {
+    background-color: blue;
+}
+
+.container {
+    width: 500px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 100px;
+    background-color: rgb(158, 158, 158);
+}
+
+.sendButton {
+    display: flex;
+     justify-content: center;
+}
+
+.inputLabel {
+    margin-top: 20px;
+}
+
+.container h1 {
+    margin: 10px auto 0 auto;
+}
